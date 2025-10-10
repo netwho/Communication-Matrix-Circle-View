@@ -27,6 +27,8 @@ Transform your network analysis with stunning circular communication diagrams:
 - **MAC View**: Shows Ethernet (`eth.src/dst`) and Wi-Fi (`wlan.sa/da`) communication patterns
 - **IP View**: Displays IPv4 (`ip.src/dst`) and IPv6 (`ipv6.src/dst`) traffic flows
 
+![Wireshark Screenshot](images/Matrix-IP-MAC.png "Communication Matrix IP / MAC Addresses in Wireshark")
+
 ### **Traffic Volume Visualization**
 - **5 Traffic Bins** with distinct colors and line widths:
   - 🔵 **1-10 packets**: Thin blue lines
