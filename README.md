@@ -215,7 +215,7 @@ Created for network analysis and troubleshooting. Optimized for Wireshark 4.x wi
 
 ## Version History
 
-### v1.0.0 (2025-01-24)
+### v0.0.1 (2025-01-24)
 - Initial release
 - Dual circle visualization (IP + MAC)
 - Top 50 conversations table
