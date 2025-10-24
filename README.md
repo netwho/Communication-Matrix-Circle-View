@@ -2,7 +2,7 @@
 
 Beautiful circular network communication visualization with integrated conversation analysis table.
 
-![Communication Matrix Report](docs/screenshot.png)
+![Communication Matrix Report](images/Matrix-IP-MAC.png)
 
 ## Overview
 
