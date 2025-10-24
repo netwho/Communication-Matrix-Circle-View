@@ -1,4 +1,8 @@
 # Communication Matrix Report - Wireshark Plugin
+[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-blue)]()
+[![Wireshark](https://img.shields.io/badge/wireshark-4.0%2B-green)]()
+[![License](https://img.shields.io/badge/license-MIT-blue)]()
+[![Language](https://img.shields.io/badge/language-Lua-purple)]()
 
 Beautiful circular network communication visualization with integrated conversation analysis table.
 
