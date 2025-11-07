@@ -672,7 +672,14 @@ end
 local function export_pdf(svg_path, tw, tools)
   local home = get_home_dir()
   local stamp = os.date("%Y%m%d-%H%M%S")
-  local pdf_path = home .. "/CommMatrixTable-" .. stamp .. ".pdf"
+  local output_dir = home .. "/Documents/PacketReporter Reports"
+  -- Ensure output directory exists (use PowerShell on Windows)
+  if os.getenv("USERPROFILE") then
+    run_sh('powershell -Command "New-Item -Path \"' .. output_dir .. '\" -ItemType Directory -Force | Out-Null"')
+  else
+    run_sh("mkdir -p '" .. output_dir .. "'")
+  end
+  local pdf_path = output_dir .. "/CommMatrixTable-" .. stamp .. ".pdf"
 
   if tools.rsvg then
     local cmd = "sh -c '\""..tools.rsvg.."\" -f pdf -o \""..pdf_path.."\" \""..svg_path.."\"'"
