@@ -1,5 +1,5 @@
 # Communication Matrix Report - Wireshark Plugin
-[![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)]()
+[![Version](https://img.shields.io/badge/version-0.1.2-blue.svg)]()
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-blue)]()
 [![Wireshark](https://img.shields.io/badge/wireshark-4.0%2B-green)]()
 [![License](https://img.shields.io/badge/license-MIT-blue)]()
@@ -51,7 +51,7 @@ Choose your platform:
 
 ### Manual Installation
 
-1. Copy `comm_matrix_table_view.lua` to your Wireshark plugins directory:
+1. Copy `comm_matrix_reporter.lua` to your Wireshark plugins directory:
    - **macOS/Linux**: `~/.local/lib/wireshark/plugins/`
    - **Windows**: `%APPDATA%\Wireshark\plugins\`
 
@@ -78,7 +78,9 @@ Choose your platform:
 
 1. **Open capture file** or start live capture in Wireshark
 2. **Apply display filter** (optional) to focus on specific traffic
-3. **Open plugin**: Go to `Tools → Communication Matrix Report`
+3. **Open plugin**: 
+   - If PacketReporter is installed: `Tools → PacketReporter → 4. Communication Matrix Report`
+   - Otherwise: `Tools → Communication Matrix Report`
 4. **Wait for processing**: Plugin analyzes all packets in current display
 5. **View results**: Click "Open PNG" to view visualization
 
@@ -86,7 +88,7 @@ Choose your platform:
 
 - **Open PNG**: Converts SVG to PNG and opens in default viewer (requires rsvg-convert)
 - **Open SVG**: Opens SVG file directly in browser
-- **Export PDF**: Saves report as PDF to your HOME directory
+- **Export PDF**: Saves report as PDF and automatically opens it with your default PDF viewer
 
 ### Tips
 
@@ -126,7 +128,7 @@ One of the following tools:
 ### File Locations
 
 - **SVG/PNG**: Temporary files (opened automatically)
-- **PDF**: Saved to HOME directory as `CommMatrixTable-YYYYMMDD-HHMMSS.pdf`
+- **PDF**: Saved to `~/Documents/PacketReporter Reports/comm_matrix_report-YYYYMMDD-HHMMSS.pdf` and automatically opened
 
 ## Troubleshooting
 
@@ -188,16 +190,16 @@ One of the following tools:
 ### File Structure
 
 ```
-Communication-Matrix-Circle-View/
-├── comm_matrix_table_view.lua          # Main plugin file
-├── README_MATRIX_REPORT.md             # This file
-├── Mac_Installer/
+Communication-Matrix-Reporter/
+├── comm_matrix_reporter.lua            # Main plugin file
+├── README.md                            # This file
+├── Mac-Installer/
 │   ├── install_comm_matrix_report.sh   # macOS installer
 │   └── README.md                        # macOS instructions
-├── Linux_Installer/
+├── Linux-Installer/
 │   ├── install_comm_matrix_report.sh   # Linux installer
 │   └── README.md                        # Linux instructions
-└── Windows_Installer/
+└── Windows-Installer/
     ├── install_comm_matrix_report.ps1  # Windows installer
     └── README.md                        # Windows instructions
 ```

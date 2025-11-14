@@ -14,7 +14,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-PLUGIN_NAME="comm_matrix_table_view.lua"
+PLUGIN_NAME="comm_matrix_reporter.lua"
 WIRESHARK_PLUGINS_DIR="$HOME/.local/lib/wireshark/plugins"
 INSTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -224,7 +224,7 @@ print_usage() {
     echo "  1. Launch Wireshark"
     echo "  2. Load a packet capture file or start a live capture"
     echo "  3. Apply display filters to focus on specific traffic (optional but recommended)"
-    echo "  4. Go to: Tools → Communication Matrix Report"
+    echo "  4. Go to: Tools → Communication Matrix Report (or PacketReporter → 4. Communication Matrix Report if PacketReporter is installed)"
     echo "  5. Wait for processing to complete"
     echo "  6. Click 'Open PNG' to view the visualization"
     echo
@@ -240,7 +240,7 @@ print_usage() {
     print_info "Export options:"
     echo "  • Open PNG: Converts SVG to PNG and opens in default viewer (requires rsvg-convert)"
     echo "  • Open SVG: Opens SVG file directly in browser"
-    echo "  • Export PDF: Saves report to HOME directory as CommMatrixTable-YYYYMMDD-HHMMSS.pdf"
+    echo "  • Export PDF: Saves report to ~/Documents/PacketReporter Reports/comm_matrix_report-YYYYMMDD-HHMMSS.pdf and opens automatically"
     echo
     print_info "Troubleshooting:"
     echo "  • If no conversations appear: check your display filter"

@@ -6,7 +6,7 @@
 #Requires -Version 5.0
 
 # Configuration
-$PLUGIN_NAME = "comm_matrix_table_view.lua"
+$PLUGIN_NAME = "comm_matrix_reporter.lua"
 $WIRESHARK_PLUGINS_DIR = Join-Path $env:APPDATA "Wireshark\plugins"
 $INSTALL_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 
@@ -243,7 +243,7 @@ function Write-Usage {
     Write-Host "  1. Launch Wireshark"
     Write-Host "  2. Load a packet capture file or start a live capture"
     Write-Host "  3. Apply display filters to focus on specific traffic (optional but recommended)"
-    Write-Host "  4. Go to: Tools → Communication Matrix Report"
+    Write-Host "  4. Go to: Tools → Communication Matrix Report (or PacketReporter → 4. Communication Matrix Report if PacketReporter is installed)"
     Write-Host "  5. Wait for processing to complete"
     Write-Host "  6. Click 'Open PNG' to view the visualization"
     Write-Host ""
@@ -259,7 +259,7 @@ function Write-Usage {
     Write-Info "Export options:"
     Write-Host "  • Open PNG: Converts SVG to PNG and opens in default viewer (requires rsvg-convert)"
     Write-Host "  • Open SVG: Opens SVG file directly in browser"
-    Write-Host "  • Export PDF: Saves report to HOME directory as CommMatrixTable-YYYYMMDD-HHMMSS.pdf"
+    Write-Host "  • Export PDF: Saves report to ~/Documents/PacketReporter Reports/comm_matrix_report-YYYYMMDD-HHMMSS.pdf and opens automatically"
     Write-Host ""
     Write-Info "Troubleshooting:"
     Write-Host "  • If no conversations appear: check your display filter"
