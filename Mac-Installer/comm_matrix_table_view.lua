@@ -15,6 +15,16 @@ Tested with Wireshark 4.x
 if not gui_enabled() then return end
 
 ------------------------------------------------------------
+-- Plugin Information
+------------------------------------------------------------
+set_plugin_info({
+  version = "0.1.1",
+  description = "Communication Matrix Report - Circular visualization with conversation table",
+  author = "Communication Matrix Project",
+  repository = "https://github.com/netwho/Communication-Matrix-Circle-View"
+})
+
+------------------------------------------------------------
 -- Fields
 ------------------------------------------------------------
 local F = Field.new
