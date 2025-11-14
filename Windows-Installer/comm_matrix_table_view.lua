@@ -15,6 +15,16 @@ Tested with Wireshark 4.x
 if not gui_enabled() then return end
 
 ------------------------------------------------------------
+-- Plugin Information
+------------------------------------------------------------
+set_plugin_info({
+  version = "0.1.1",
+  description = "Communication Matrix Report - Circular visualization with conversation table",
+  author = "Communication Matrix Project",
+  repository = "https://github.com/netwho/Communication-Matrix-Circle-View"
+})
+
+------------------------------------------------------------
 -- Fields
 ------------------------------------------------------------
 local F = Field.new
@@ -673,12 +683,8 @@ local function export_pdf(svg_path, tw, tools)
   local home = get_home_dir()
   local stamp = os.date("%Y%m%d-%H%M%S")
   local output_dir = home .. "/Documents/PacketReporter Reports"
-  -- Ensure output directory exists (use PowerShell on Windows)
-  if os.getenv("USERPROFILE") then
-    run_sh('powershell -Command "New-Item -Path \"' .. output_dir .. '\" -ItemType Directory -Force | Out-Null"')
-  else
-    run_sh("mkdir -p '" .. output_dir .. "'")
-  end
+  -- Ensure output directory exists
+  run_sh("mkdir -p '" .. output_dir .. "'")
   local pdf_path = output_dir .. "/CommMatrixTable-" .. stamp .. ".pdf"
 
   if tools.rsvg then
