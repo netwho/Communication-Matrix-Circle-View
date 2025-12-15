@@ -20,7 +20,7 @@ if not gui_enabled() then return end
 set_plugin_info({
   version = "0.1.2",
   description = "Communication Matrix Report - Circular visualization with conversation table",
-  author = "Communication Matrix Project",
+  author = "Walter Hofstetter",
   repository = "https://github.com/netwho/Communication-Matrix-Circle-View"
 })
 
@@ -711,7 +711,10 @@ local function export_pdf(svg_path, tw, tools)
     local cmd = tools.magick:match("magick$") and (tools.magick.." convert") or tools.magick
     local full = "sh -c '"..cmd.." \""..svg_path.."\" \""..pdf_path.."\"'"
     if run_sh(full) then
-      tw:append("Exported PDF via: "..tools.magick.." -> "..pdf_path.."\n"); return
+      tw:append("Exported PDF via: "..tools.magick.." -> "..pdf_path.."\n")
+      -- Auto-open the PDF with default app
+      run_sh("open '" .. pdf_path .. "'")
+      return
     end
   end
 
