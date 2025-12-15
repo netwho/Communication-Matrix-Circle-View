@@ -20,7 +20,7 @@ if not gui_enabled() then return end
 set_plugin_info({
   version = "0.1.2",
   description = "Communication Matrix Report - Circular visualization with conversation table",
-  author = "Communication Matrix Project",
+  author = "Walter Hofstetter",
   repository = "https://github.com/netwho/Communication-Matrix-Circle-View"
 })
 
@@ -683,24 +683,16 @@ local function export_pdf(svg_path, tw, tools)
   local home = get_home_dir()
   local stamp = os.date("%Y%m%d-%H%M%S")
   local output_dir = home .. "/Documents/PacketReporter Reports"
-  -- Ensure output directory exists (use PowerShell on Windows)
-  if os.getenv("USERPROFILE") then
-    run_sh('powershell -Command "New-Item -Path \"' .. output_dir .. '\" -ItemType Directory -Force | Out-Null"')
-  else
-    run_sh("mkdir -p '" .. output_dir .. "'")
-  end
+  -- Ensure output directory exists
+  run_sh("mkdir -p '" .. output_dir .. "'")
   local pdf_path = output_dir .. "/comm_matrix_report-" .. stamp .. ".pdf"
 
   if tools.rsvg then
     local cmd = "sh -c '\""..tools.rsvg.."\" -f pdf -o \""..pdf_path.."\" \""..svg_path.."\"'"
     if run_sh(cmd) then
       tw:append("Exported PDF via: "..tools.rsvg.." -> "..pdf_path.."\n")
-      -- Auto-open the PDF with default app (Windows uses 'start')
-      if os.getenv("USERPROFILE") then
-        run_sh('start "" "' .. pdf_path .. '"')
-      else
-        run_sh("open '" .. pdf_path .. "'")
-      end
+      -- Auto-open the PDF with default app
+      run_sh("open '" .. pdf_path .. "'")
       return
     end
   end
@@ -709,12 +701,8 @@ local function export_pdf(svg_path, tw, tools)
     local cmd = "sh -c '\""..tools.inkscape.."\" \""..svg_path.."\" --export-type=pdf --export-filename=\""..pdf_path.."\"'"
     if run_sh(cmd) then
       tw:append("Exported PDF via: "..tools.inkscape.." -> "..pdf_path.."\n")
-      -- Auto-open the PDF with default app (Windows uses 'start')
-      if os.getenv("USERPROFILE") then
-        run_sh('start "" "' .. pdf_path .. '"')
-      else
-        run_sh("open '" .. pdf_path .. "'")
-      end
+      -- Auto-open the PDF with default app
+      run_sh("open '" .. pdf_path .. "'")
       return
     end
   end
@@ -724,12 +712,8 @@ local function export_pdf(svg_path, tw, tools)
     local full = "sh -c '"..cmd.." \""..svg_path.."\" \""..pdf_path.."\"'"
     if run_sh(full) then
       tw:append("Exported PDF via: "..tools.magick.." -> "..pdf_path.."\n")
-      -- Auto-open the PDF with default app (Windows uses 'start')
-      if os.getenv("USERPROFILE") then
-        run_sh('start "" "' .. pdf_path .. '"')
-      else
-        run_sh("open '" .. pdf_path .. "'")
-      end
+      -- Auto-open the PDF with default app
+      run_sh("open '" .. pdf_path .. "'")
       return
     end
   end
