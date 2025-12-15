@@ -20,7 +20,7 @@ if not gui_enabled() then return end
 set_plugin_info({
   version = "0.1.2",
   description = "Communication Matrix Report - Circular visualization with conversation table",
-  author = "Communication Matrix Project",
+  author = "Walter Hofstetter",
   repository = "https://github.com/netwho/Communication-Matrix-Circle-View"
 })
 
